@@ -1,0 +1,40 @@
+.
+..
+.CFUserTextEncoding
+.DS_Store
+.Rapp.history
+.Trash
+.bash_history
+.bash_sessions
+.cups
+.dropbox
+.gitconfig
+.gitconfig.swp
+.node_repl_history
+.npm
+.nvm
+.oh-my-zsh
+.viminfo
+.vscode
+.weasis
+.zcompdump-Thao’s iMac-5.8
+.zsh_history
+.zsh_sessions
+.zshrc
+Applications
+Creative Cloud Files Personal Account thaophta@gmail.com 918F4E9258B717470A495D55@AdobeID
+Desktop
+Documents
+Downloads
+Dropbox
+Library
+MacKeeper Backups
+Movies
+Music
+Pictures
+Public
+con
+directory-contents.txt
+northcoders
+ta.phuongthao@yahoo.com Creative Cloud Files
+test_directory
