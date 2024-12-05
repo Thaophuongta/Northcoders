@@ -1,7 +1,7 @@
 function isRightAngledTriangle(sideA, sideB, sideC) {
-  const sideASquared = "GET VALUE BY CALLING APPROPRIATE UTIL FUNCTION";
-  const sideBSquared = "GET VALUE BY CALLING APPROPRIATE UTIL FUNCTION";
-  const sideCSquared = "GET VALUE BY CALLING APPROPRIATE UTIL FUNCTION";
+  const sideASquared = require("./mathFunctions").squareNumber(sideA);
+  const sideBSquared = require("./mathFunctions").squareNumber(sideB);
+  const sideCSquared = require("./mathFunctions").squareNumber(sideC);
 
   return sideCSquared === sideASquared + sideBSquared;
 }
