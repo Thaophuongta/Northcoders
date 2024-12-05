@@ -8,6 +8,7 @@ You will also be given a positive integer which represents how far the cat can j
 Your task is to calculate if the cat can jump far enough to catch the mouse. Each space "x" in the array expends 1 from the cat's movement.
 It does not matter if the cat is before or after the mouse in the array.
 */
+
 }
 
 runTest(

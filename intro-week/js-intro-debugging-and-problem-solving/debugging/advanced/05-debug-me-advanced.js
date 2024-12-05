@@ -26,16 +26,10 @@ function findHighestScoring(array, num) {
     return [];
   }
 
-  array.sort((a, b) => {
-    return b.score - a.score;
-  });
+  array.sort((a, b) => (b.score - a.score));
 
-  let multipleOfNum = 1;
-  for (let i = 1; i <= array.length; i++) {
-    if (i % num === 0) {
-      multipleOfNum++;
-    }
-  }
+  const multipleOfNum = Math.floor(array.length/num)
+
   const newArray = array.filter((object, index) => {
     return index < multipleOfNum;
   });

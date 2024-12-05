@@ -1,5 +1,5 @@
 const { check, runTest, skipTest } = require("../../test-api/index.js");
-const { sumArray } = require("./utils/sum.js");
+const sumArray = require("./utils/sum.js").sumArray;
 
 function getBasketCost(arr) {
   const costs = arr.map((fruitObj) => fruitObj.cost);

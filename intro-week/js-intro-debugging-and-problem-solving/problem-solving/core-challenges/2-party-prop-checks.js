@@ -6,6 +6,15 @@ function partyPropCheck(stock, colour) {
 
   You will be given a stock object, and a colour. Return the number of items which match the given colour. The colour "rainbow" is a match for all colours.
   */
+ let total = 0
+ for (const key in stock) {
+  for (const colourKey in stock[key]) {
+    if (colourKey === colour || colourKey === "rainbow") {
+      total += stock[key][colourKey];
+    }
+  }
+}
+ return total
 }
 
 runTest("counts the props when only one item is in stock", function () {
@@ -43,7 +52,7 @@ runTest("counts the props when only one item is in stock", function () {
   ).isEqualTo(30);
 });
 
-skipTest("counts the items where multiple items are in the stock", function () {
+runTest("counts the items where multiple items are in the stock", function () {
   check(
     partyPropCheck(
       {
@@ -90,7 +99,7 @@ skipTest("counts the items where multiple items are in the stock", function () {
   ).isEqualTo(13);
 });
 
-skipTest("counts rainbow items in addition to those of specific", function () {
+runTest("counts rainbow items in addition to those of specific", function () {
   check(
     partyPropCheck(
       {

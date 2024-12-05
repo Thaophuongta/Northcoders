@@ -6,6 +6,13 @@ function carrotCropCount(gardenPatch) {
 
   You are given a garden patch represented by a nested array. Count the total number of carrots found, and return it.
   */
+ let num = 0
+ for (let i =0; i<gardenPatch.length; i++){
+  for (let y =0; y<gardenPatch[i].length; y++) {
+    if (gardenPatch[i][y] === "carrot") {num++}
+  }
+ }
+ return num
 }
 
 runTest("counts the carrots when there are only carrots present", function () {
@@ -21,7 +28,7 @@ runTest("counts the carrots when there are only carrots present", function () {
   ).isEqualTo(6);
 });
 
-skipTest("counts the carrots given mixed veg patch", function () {
+runTest("counts the carrots given mixed veg patch", function () {
   check(carrotCropCount([["carrot", "cabbage"]])).isEqualTo(1);
   check(
     carrotCropCount([["carrot", "radish", "carrot", "beetroot"]])

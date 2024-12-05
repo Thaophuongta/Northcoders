@@ -7,6 +7,10 @@ Your task is to find out whether or not a and b appear consecutively in arr, and
 
 It is guaranteed that a and b are both present in arr.
 */
+for (let i=0; i<integers.length-1; i++) {
+  if ((integers[i] === a) && (integers[i+1] === b)) {return true}
+}
+return false
 }
 
 runTest("returns true when the given numbers are consecutive", function () {
@@ -17,7 +21,7 @@ runTest("returns true when the given numbers are consecutive", function () {
   );
 });
 
-skipTest(
+runTest(
   "returns false when the given numbers are not consecutive",
   function () {
     check(consecutiveItems([1, 2, 3, 4], 1, 3)).isEqualTo(false);
