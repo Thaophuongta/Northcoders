@@ -2,9 +2,12 @@ const { check, runTest, skipTest } = require("../test-api/index.js");
 
 // QUESTION 1
 
-function connectStrings() {
+function connectStrings(str1,str2) {
   // This function should take 2 strings and join them together with a space in between
+  const newStr = str1+" "+str2
   // return this newly created string
+  return newStr
+
 }
 
 runTest("connectStrings() can join 2 strings together", function () {
@@ -15,11 +18,13 @@ runTest("connectStrings() can join 2 strings together", function () {
 
 // QUESTION 2
 
-function checkWordEndsWithIng() {
+function checkWordEndsWithIng(str) {
   // take a string as an argument and return a boolean based on whether the word given ends with 'ing'
+const lastChar = str.slice(-3)
+return lastChar === "ing"
 }
 
-skipTest(
+runTest(
   "checkWordEndsWithIng() can return true/false for a single word",
   function () {
     check(checkWordEndsWithIng("doing")).isEqualTo(true);
@@ -31,13 +36,16 @@ skipTest(
 
 // QUESTION 3
 
-function addMissingPunctuation() {
+function addMissingPunctuation(str) {
   // take a string as an argument
   // each string may end with a full-stop, exclamation mark, or question mark
+  const lastChar = str.slice(-1)
   // if the string doesn't end with punctuation, return the string with a full-stop added at the end. Otherwise, return the string unchanged
+  if (!/[.!?]/.test(lastChar)) {return str+"."}
+  else {return str}
 }
 
-skipTest(
+runTest(
   "addMissingPunctuation() returns the string with accurate punctuation",
   function () {
     check(addMissingPunctuation("Hello there!")).isEqualTo("Hello there!");
@@ -51,11 +59,12 @@ skipTest(
 
 // QUESTION 4
 
-function getRemainder() {
+function getRemainder(a,b) {
   // This function should take two arguments a and b, and return the remainder of the division of a / b
+  return a%b
 }
 
-skipTest("getRemainder() returns the correct remainder", function () {
+runTest("getRemainder() returns the correct remainder", function () {
   check(getRemainder(10, 2)).isEqualTo(0);
   check(getRemainder(119, 10)).isEqualTo(9);
   check(getRemainder(50, 6)).isEqualTo(2);
@@ -66,9 +75,11 @@ skipTest("getRemainder() returns the correct remainder", function () {
 function accessObject(obj, key) {
   // This function should take an object and a key as its arguments and return the value found at the provided key in the input object
   // If the key doesn't exist on the object, this function should return a string of "property not found"
+  if (!Object.keys(obj).includes(key)) {return "property not found"}
+  else {return obj[key]}
 }
 
-skipTest("accessObject() can access a property value using a key", function () {
+runTest("accessObject() can access a property value using a key", function () {
   check(accessObject({ name: "jonny", age: 32 }, "name")).isEqualTo("jonny");
   check(accessObject({ name: "jonny", age: 32 }, "age")).isEqualTo(32);
   check(accessObject({ name: "jonny", age: 32 }, "email")).isEqualTo(
@@ -81,9 +92,10 @@ skipTest("accessObject() can access a property value using a key", function () {
 function makeAllWordsBold(arr) {
   // In markdown files (e.g. 'README.md') we can denote words as bold by putting two asterisks on either side of them, such as: **hello**
   // This function should take an array of strings as an argument and return an array consisting of the same strings but in bold - ie with two asterisks either side of them
+return arr.map(x => "**" + x + "**")
 }
 
-skipTest(
+runTest(
   "makeAllWordsBold() can convert all strings to be surrounded by double asterisks",
   function () {
     check(makeAllWordsBold(["hello", "there", "world"])).isEqualTo([
@@ -103,9 +115,10 @@ skipTest(
 
 function getPositiveNumbers(arr) {
   // This function should take an array of numbers as an argument and return an array containing all positive numbers from the input (retaining the order)
+return arr.filter(x => x > 0)
 }
 
-skipTest(
+runTest(
   "getPositiveNumbers() can get all the positive numbers from an array of numbers",
   function () {
     check(getPositiveNumbers([1, -1, 2, -2, 3, -3])).isEqualTo([1, 2, 3]);

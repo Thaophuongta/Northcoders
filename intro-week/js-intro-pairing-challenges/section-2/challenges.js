@@ -2,8 +2,9 @@ const { check, runTest, skipTest } = require("../test-api/index.js");
 
 // QUESTION 1
 
-function checkSameFinalCharacter() {
+function checkSameFinalCharacter(str1,str2) {
   // This function should take two strings as arguments and return true if their final character is the same or false if not
+return str1.slice(-1) === str2.slice(-1)
 }
 
 // BONUS POINTS: you can complete this problem without resorting to if statements! Give it a try!
@@ -20,11 +21,16 @@ runTest(
 
 // QUESTION 2
 
-function isAllUpperCase() {
+function isAllUpperCase(str) {
   // This function should take a string as an argument and return true if every letter is upper case and false if at least one character is not
+let isUpper = false
+  for (let i=0; i<str.length;i++) {
+  /[A-Z]/.test(str[i])? isUpper = true: isUpper = false
+}
+return isUpper
 }
 
-skipTest("isAllUpperCase() checks if every letter is upper case", function () {
+runTest("isAllUpperCase() checks if every letter is upper case", function () {
   check(isAllUpperCase("hello")).isEqualTo(false);
   check(isAllUpperCase("YEAH")).isEqualTo(true);
   check(isAllUpperCase("Well HELLO!")).isEqualTo(false);
@@ -35,9 +41,15 @@ skipTest("isAllUpperCase() checks if every letter is upper case", function () {
 
 function collectTheVowels(str) {
   // This function should take a string as its argument and return a string consisting of all vowels found in the input (retaining the order)
+  let isVowel = false
+  let newStr = ""
+  for (let i=0; i<str.length; i++) {
+  /[aeoiu]/.test(str[i])? isUpper = true && (newStr = newStr + str[i]) : isUpper = false
+}
+return newStr
 }
 
-skipTest(
+runTest(
   "collectTheVowels() takes a string of many letters and returns a string containing those vowels in correct order",
   function () {
     check(collectTheVowels("a")).isEqualTo("a");
@@ -53,9 +65,14 @@ function accessItem(arr, index) {
   // This function should take two arguments, an array and an index, and return the element at that specified index
   // The index provided may be equal to or greater than the length of the given array. In this case, rather than counting past the end of the array where there are no values, the indexing should be considered to "loop back around" and continue from the start of the array
   // For examples of this behaviour, look at the second group of tests below
+  if (index < arr.length) {return arr[index];} 
+  else {
+    const newIndex = index % arr.length;
+    return arr[newIndex];
+  }
 }
 
-skipTest(
+runTest(
   "accessItem() can access an item inside in an array with a given index below the array length",
   function () {
     check(accessItem(["a", "b", "c", "d"], 2)).isEqualTo("c");
@@ -64,7 +81,7 @@ skipTest(
   }
 );
 
-skipTest(
+runTest(
   "accessItem() can access an item inside in an array with an index equal to or above the array length",
   function () {
     check(accessItem(["a", "b", "c", "d"], 4)).isEqualTo("a");
